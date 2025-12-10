@@ -1,0 +1,52 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "XYZ name",
+            "desc": "XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        },
+        {
+            "id": 1,
+            "name": "2 XYZ name",
+            "desc": "2 XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        },
+        {
+            "id": 3,
+            "name": "3 XYZ name",
+            "desc": "3 XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        },
+        {
+            "id": 4,
+            "name": "4 XYZ name",
+            "desc": "4 XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        },
+        {
+            "id": 5,
+            "name": "5 XYZ name",
+            "desc": "5 XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        },
+        {
+            "id": 6,
+            "name": "6 XYZ name",
+            "desc": "6 XYZ description sbdkvks",
+            "price": 999,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s"
+        }
+    ]
+}

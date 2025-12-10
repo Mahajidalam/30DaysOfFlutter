@@ -14,18 +14,39 @@ class Item {
     required this.color,
     required this.image,
   });
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      image: map['image'],
+    );
+  } 
+
+  toMap() => {
+    "id": id,
+    "name": name,
+    "desc": desc,
+    "price": price,
+    "color": color,
+    "image": image,
+  };
 }
 
 class CatelogModel {
-  static final items = [
-    Item(
-      id: 1,
-      name: "XYZ name",
-      desc: "XYZ description sbdkvks",
-      price: 999,
-      color: '#33505a',
-      image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s',
-    ),
-  ];
+  static List<Item> items = [];
+  //  = [
+  //   Item(
+  //     id: 1,
+  //     name: "XYZ name",
+  //     desc: "XYZ description sbdkvks",
+  //     price: 999,
+  //     color: '#33505a',
+  //     image:
+  //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s',
+  //   ),
+  // ];
 }
