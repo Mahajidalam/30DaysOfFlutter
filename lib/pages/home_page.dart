@@ -50,12 +50,48 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: (CatelogModel.items != null && CatelogModel.items.isNotEmpty)
-            ? ListView.builder(
-                itemCount: CatelogModel.items.length,
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                ),
                 itemBuilder: (context, index) {
-                  return ItemWidget(item: CatelogModel.items[index]);
+                  final item = CatelogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(15),
+                    ),
+                    child: GridTile(
+                      header: Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.deepPurple),
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      child: Image.network(item.image),
+                      footer: Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(color: Colors.black),
+                        child: Text(
+                          item.price.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  );
                 },
+                itemCount: CatelogModel.items.length,
               )
+            // ListView.builder(
+            //     itemCount: CatelogModel.items.length,
+            //     itemBuilder: (context, index) {
+            //       return ItemWidget(item: CatelogModel.items[index]);
+            //     },
+            //   )
             : Center(child: CircularProgressIndicator()),
       ),
       // Center(
