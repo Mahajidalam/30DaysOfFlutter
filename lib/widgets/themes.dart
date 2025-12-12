@@ -15,8 +15,13 @@ class MyTheme {
     textTheme: Theme.of(context).textTheme,
     primarySwatch: Colors.deepPurple,
     // primaryTextTheme: GoogleFonts.latoTextTheme(),
-    fontFamily: GoogleFonts.lato().fontFamily,
+    // fontFamily: GoogleFonts.lato().fontFamily,
+    fontFamily: GoogleFonts.poppins().fontFamily,
   );
 
   static ThemeData dartTheme(BuildContext context) => ThemeData(brightness: Brightness.dark);
+
+  // Colors
+  static Color creamColor = Color(0xfff5f5f5);
+  static Color darkBuishColor = Color(0xff403b58);
 }
