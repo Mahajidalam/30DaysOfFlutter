@@ -24,7 +24,7 @@ class Item {
       color: map['color'],
       image: map['image'],
     );
-  } 
+  }
 
   toMap() => {
     "id": id,
@@ -49,4 +49,11 @@ class CatelogModel {
   //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmDpdESZq-3Wpj65-s4kbDNMSKFbW5eJUY2Q&s',
   //   ),
   // ];
+
+  // Get Item by Id
+  static Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+  
+  // Get Item by Position
+  static getByPosition(int pos) => items[pos];
 }
