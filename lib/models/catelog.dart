@@ -37,6 +37,12 @@ class Item {
 }
 
 class CatelogModel {
+    static final cartModel = CatelogModel._internal();
+
+  CatelogModel._internal();
+
+  factory CatelogModel() => cartModel;
+
   static List<Item> items = [];
   //  = [
   //   Item(
