@@ -1,5 +1,5 @@
 class Item {
-  final num id;
+  final int id;
   final String name;
   final String desc;
   final num price;
@@ -51,9 +51,9 @@ class CatelogModel {
   // ];
 
   // Get Item by Id
-  static Item getById(int id) =>
+   Item getById(int id) =>
       items.firstWhere((element) => element.id == id, orElse: null);
   
   // Get Item by Position
-  static getByPosition(int pos) => items[pos];
+   getByPosition(int pos) => items[pos];
 }
