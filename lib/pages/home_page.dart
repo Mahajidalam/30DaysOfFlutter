@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catelog.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/home_widget/catelog_header.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_catalog/widgets/home_widget/catelog_list.dart';
 // import 'package:flutter_catalog/widgets/my_drawer.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +27,8 @@ class _HomePageState extends State<HomePage> {
 
   final String name = "Catalog";
 
+  final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +38,31 @@ class _HomePageState extends State<HomePage> {
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
     var catelogJson = await rootBundle.loadString("assets/files/catelog.json");
+
+    // var response = await http.get(Uri.parse(url));
+    // var catelogJson = response.body;
+
     var decodeData = jsonDecode(catelogJson);
+    // print(response.statusCode);
+    // print(response.body); // <-- DEBUG
+
+    // if (response.statusCode == 200) {
+    //   try {
+    //     final decodeData = jsonDecode(response.body);
+    //     var productsData = decodeData['products'];
+    //     // print(productsData);
+    //     CatelogModel.items = List.from(
+    //       productsData,
+    //     ).map<Item>((item) => Item.fromMap(item)).toList();
+    //     setState(() {});
+    //     // use data
+    //   } catch (e) {
+    //     print("JSON error: $e");
+    //   }
+    // } else {
+    //   print("API error: ${response.statusCode}");
+    // }
+
     var productsData = decodeData['products'];
     // print(productsData);
     CatelogModel.items = List.from(
@@ -44,14 +73,27 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     // final dummyList = List.generate(20, (index) => CatelogModel.items[0]);
     return Scaffold(
       backgroundColor: context.canvasColor,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: context.theme.appBarTheme.foregroundColor,
-        foregroundColor: MyTheme.creamColor,
-        child: Icon(CupertinoIcons.cart, color: Colors.white),
+      floatingActionButton: VxBuilder(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (context, _, _) =>
+            FloatingActionButton(
+              onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+              backgroundColor: context.theme.appBarTheme.foregroundColor,
+              foregroundColor: MyTheme.creamColor,
+              child: Icon(CupertinoIcons.cart, color: Colors.white),
+            ).badge(
+              color: Vx.red500,
+              size: 22,
+              count: _cart.items.length,
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
       ),
       body: SafeArea(
         child: Container(
