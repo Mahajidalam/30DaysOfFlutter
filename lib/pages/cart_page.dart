@@ -27,7 +27,7 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Rebuild happen");
+    // print("Rebuild happen");
     // final _cart = CartModel();
     final CartModel _cart = (VxState.store as MyStore).cart;
 
